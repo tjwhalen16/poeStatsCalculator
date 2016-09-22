@@ -3,8 +3,7 @@
  */
 
 
-	/* colors */
-	#header,
+	/*#header,
 	#footer {
 		background-color: #f1f1f1;
 	}
@@ -29,7 +28,6 @@
 	}
 
 
-	/* sizes */
 	#main-wrap > div {
 		min-height: 450px;
 	}
@@ -44,10 +42,8 @@
 		min-height: 80px;
 	}
 
-	/* layout */
 
 	#main-wrap {
-		/* overflow to handle inner floating block */
 		overflow: hidden;
 	}
 
@@ -62,22 +58,53 @@
 	}
 
 	#info-wrap {
-		/* overflow to handle inner floating block */
 		overflow: hidden;
 	}
 
 	.info {
 		width: 50%;
 		float: left;
-	}
+	}*/
 
 
 
+header h1{
+  background: black;
+  color: pink;
+	margin: 0;
+}
 
+html {
+	height: 100%;
+}
+body {
+	margin: 0;
+	height: inherit;
+  overflow: hidden;
+	background: #ccc;
+}
 
+.column {
+	width: 50%;
+	float:left;
+}
 
+.columns-wrap {
+	overflow: hidden;
+}
 
+.content {
+	width: 60%;
+	height: inherit;
+	background: #888;
+	margin: 0 auto;
+}
 
+.myRow:after {
+	clear: both;
+	content: "";
+	display: table;
+}
 
 
 
@@ -112,6 +139,10 @@
 
 }*/
 
+.myRowName {
+	width: 45%;
+	/*padding-right: 25%;*/
+}
 
 .myRowName, .myText, .myPercentSign{
   float:left;
@@ -126,5 +157,5 @@
 .myRow*/
 
 .myText {
-  width: 5%;
+  width: 10%;
 }
