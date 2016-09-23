@@ -108,54 +108,73 @@ body {
 
 
 
-
-/*body {
-  width: 60%;
-  margin: auto;
+.head {
+  float: left;
 }
 
-.myLeftCol {
-  width: 25%;
-  float:left;
+.sprite {
+  float: left;
 }
 
-.myRightCol {
-  width: 25%;
-  float:left;
-}*/
-
-
-
-/*
- .myRow {
-  background: yellow;
-  display: inline;
-  text-align: center;
-}*/
-
-
-
-/*.myRowName {
-
-}*/
+.myRow {
+  padding: 0;
+}
 
 .myRowName {
-	width: 45%;
+  min-height: 1px;
+	width: 30%;
 	/*padding-right: 25%;*/
+}
+
+.myHeader {
+  padding-bottom: 2%;
 }
 
 .myRowName, .myText, .myPercentSign{
   float:left;
 }
 
-/*.myRowName:after, .myText:after, .myPercentSign:after{
-  clear:both;
-  content: "";
-  display:table;
+.myPercentSign {
+    margin: 0 3% 0 0;
 }
-
-.myRow*/
 
 .myText {
   width: 10%;
+  margin: 0 0 2% 0;
+}
+
+.fire {
+  width: 7%;
+  height: 7%;
+  margin-left: 1%;
+}
+
+.fire-header {
+  color: red;
+  margin-left: 1%;
+}
+
+.cold {
+  width: 10%;
+  height: 10%;
+}
+
+.cold-header {
+  color: blue;
+  margin-left: 12%;
+}
+
+.lightning {
+  width: 5.5%;
+  height: 5.5%;
+}
+
+.lightning-header {
+  color: yellow;
+  margin-left: 8%;
+  /*font-size: 80%;*/
+}
+
+.right-col .myText {
+  margin-right: 4%;
 }
