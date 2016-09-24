@@ -1,3 +1,9 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 header h1{
   background: black;
   color: pink;
@@ -11,7 +17,7 @@ body {
 	margin: 0;
 	height: inherit;
   overflow: hidden;
-	background: #ccc;
+	background: #aaa;
 }
 
 .column {
@@ -38,7 +44,7 @@ body {
 .content {
 	width: 60%;
 	height: inherit;
-	background: #888;
+	background: #666;
 	margin: 0 auto;
 }
 
@@ -70,38 +76,33 @@ body {
   background: #FAFF94;
 }
 
-li {
-  list-style: none;
-}
 
-li .myText {
-  float: none;
-}
+
 
 
 
 .str, .int, .dex {
-  height: 50%;
-  width: 50%;
+  height: 43%;
+  width: 43%;
 }
 
 
-/*table {
-  table-layout: fixed;
-}*/
+
+
+
+
 
 table, tr, th, td {
   border: 1px solid black;
 }
 
+
+
+
 td {
   /*height 20%;
   width: 25%;*/
   text-align: center;
-}
-
-.sprite {
-  padding: 0 auto;
 }
 
 .head {
@@ -115,18 +116,25 @@ col.stats {
   width: 10%;
 }
 
-td:nth-child(2) > input {
+td:nth-child(2n) > input {
   background: #FFC4C4;
 }
 
-td:nth-child(3) > input {
+td:nth-child(3n) > input {
   background: #C4D7FF;
 }
 
-td:nth-child(4) > input {
+td:nth-child(4n) > input {
   background: #FAFF94;
 }
 
+.right-table td:nth-child(4n) > input {
+  background: #C4FFC6;
+}
+
+p {
+  margin: 0;
+}
 
 .myRow {
   padding: 0;
@@ -159,32 +167,41 @@ input {
 }
 
 .fire {
-  width: 45%;
+  width: 40%;
   height: 35%;
 }
 
-.fire-header {
+.red-header {
   color: red;
-  margin-left: 1%;
 }
 
 .cold {
-  width: 39%;
+  width: 49%;
   height: 9%;
 }
 
-.cold-header {
+.blue-header {
   color: blue;
-  margin-left: 12%;
 }
 
 .lightning {
-  width: 6%;
+  width: 22%;
   height: 2%;
 }
 
-.lightning-header {
+.yellow-header {
   color: yellow;
-  margin-left: 8%;
   /*font-size: 80%;*/
+}
+
+.green-header {
+  color: green;
+}
+
+/*th {
+  height: 330%;
+}*/
+
+tr.header {
+  height: 4.5em;
 }

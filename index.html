@@ -21,17 +21,23 @@
             <col class="stats"/>
             <col class="stats"/>
             <col class="stats"/>
-            <tr>
-              <th rowspan="2">Resistances</th>
-              <th class="fire-header">Fire</th>
-              <th class="cold-header">Cold</th>
-              <th class="lightning-header">Lightning</th>
+            <tr class="header">
+              <th>Resistances</th>
+
+              <th class="red-header"><p>Fire</p>
+                <img src="pictures/fire.png" alt="fire" class="sprite fire">
+                </th>
+
+              <th class="blue-header"><p>Cold</p>
+                <img src="pictures/cold.png" alt="cold" class="sprite cold">
+              </th>
+
+              <th class="yellow-header"><p>Lightning</p>
+                <img src="pictures/lightning.png" alt="lightning" class="sprite lightning">
+              </th>
+
             </tr>
-            <tr>
-              <td><img src="pictures/fire.png" alt="fire" class="sprite fire"></td>
-              <td><img src="pictures/cold.png" alt="cold" class="sprite cold"></td>
-              <td><img src="pictures/lightning.png" alt="lightning" class="sprite lightning"></td>
-            </tr>
+
             <tr>
               <td>Stat Target</td>
               <td><input type="text" class="myText" maxLenght="2"></td>
@@ -113,173 +119,109 @@
           </table>
 
         </div>
-        <!-- <div class="column right-col names">
 
-          <ul class="rowNames">
-            <div><h2>Resistances</h2></div>
-            <li class="first">Stat Target</li>
-            <li>Stat with no items</li>
-            <li>Helmet</li>
-            <li>Body</li>
-            <li>Gloves</li>
-            <li>Belt</li>
-            <li>Boots</li>
-            <li>Amulet</li>
-            <li>Ring L</li>
-            <li>Ring R</li>
-            <li>Mainhand Weapon</li>
-            <li>Offhand Weapon</li>
-            <li>Jewels</li>
-          </ul>
+        <div class="column right-col">
+          <table class="right-table">
+            <col class="names"/>
+            <col class="stats"/>
+            <col class="stats"/>
+            <col class="stats dex-input"/>
+            <tr class="header">
+              <th>Attributes</th>
 
+              <th class="red-header"><p>Strength</p>
+                <img src="pictures/strength.png" alt="str" class="sprite str">
+                </th>
 
-        </div>
-        <div class="column right-col stats">
+              <th class="blue-header"><p>Intelligence</p>
+                <img src="pictures/intelligence.png" alt="int" class="sprite int">
+              </th>
 
-          <ul id="fire">
-            <div class="fire-header">Fire</div>
-            <li><img src="pictures/fire.png" alt="fire" class="sprite fire"></li>
-            <li class="first"><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-          </ul>
+              <th class="green-header"><p>Dexterity</p>
+                <img src="pictures/dexterity.png" alt="dex" class="sprite dex">
+              </th>
 
-        </div>
-        <div class="column right-col stats">
+            </tr>
 
-          <ul id="cold">
-            <div class="cold-header">Cold</div>
-            <li><img src="pictures/cold.png" alt="cold" class="sprite cold"></li>
-            <li class="first"><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-          </ul>
-
-        </div>
-        <div class="column right-col stats">
-
-          <ul id="lightning">
-            <div class="lightning-header">Lightning</div>
-            <img src="pictures/lightning.png" alt="lightning" class="sprite lightning">
-            <li class="first"><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-          </ul>
-
-        </div> -->
-
-        <div class="column right-col names">
-
-          <ul class="rowNames">
-            <div><h2>Attributes</h2></div>
-            <li class="first">Stat Target</li>
-            <li>Stat with no items</li>
-            <li>Helmet</li>
-            <li>Body</li>
-            <li>Gloves</li>
-            <li>Belt</li>
-            <li>Boots</li>
-            <li>Amulet</li>
-            <li>Ring L</li>
-            <li>Ring R</li>
-            <li>Mainhand Weapon</li>
-            <li>Offhand Weapon</li>
-            <li>Jewels</li>
-          </ul>
-
-
-        </div>
-        <div class="column right-col stats">
-
-          <ul id="strength">
-            <div>Strength</div>
-            <li><img src="pictures/strength.png" alt="str" class="sprite str"></li>
-            <li class="first"><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-          </ul>
-
-        </div>
-        <div class="column right-col stats">
-
-          <ul id="intelligence">
-            <div>Intelligence</div>
-            <li><img src="pictures/intelligence.png" alt="int" class="sprite int"></li>
-            <li class="first"><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-          </ul>
-
-        </div>
-        <div class="column right-col stats">
-
-          <ul id="dexterity">
-            <div>Dexterity</div>
-            <img src="pictures/dexterity.png" alt="dex" class="sprite dex">
-            <li class="first"><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-            <li><input type="text" class="myText" maxLenght="2"><div class="myPercentSign"></div></input></li>
-          </ul>
+            <tr>
+              <td>Stat Target</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Naked Stat</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Helmet</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Body</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Gloves</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Belt</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Boots</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Amulet</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Ring(L)</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Ring(R)</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Mainhand</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Offhand</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+            <tr>
+              <td>Jewels</td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+              <td><input type="text" class="myText" maxLenght="2"></td>
+            </tr>
+          </table>
 
         </div>
 
