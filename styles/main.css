@@ -16,6 +16,7 @@ body {
 
 .column {
 	float:left;
+  width: 50%;
 }
 
 .column.right-col.names {
@@ -85,14 +86,47 @@ li .myText {
 }
 
 
+/*table {
+  table-layout: fixed;
+}*/
+
+table, tr, th, td {
+  border: 1px solid black;
+}
+
+td {
+  /*height 20%;
+  width: 25%;*/
+  text-align: center;
+}
+
+.sprite {
+  padding: 0 auto;
+}
 
 .head {
   float: left;
 }
 
-.sprite {
-  float: left;
+col.names {
+  width: 20%;
 }
+col.stats {
+  width: 10%;
+}
+
+td:nth-child(2) > input {
+  background: #FFC4C4;
+}
+
+td:nth-child(3) > input {
+  background: #C4D7FF;
+}
+
+td:nth-child(4) > input {
+  background: #FAFF94;
+}
+
 
 .myRow {
   padding: 0;
@@ -115,9 +149,9 @@ li .myText {
 }
 
 input {
-  width: 90%;
-  height: 20px;
-  margin: 0 0 2% 0;
+  width: 60%;
+  text-align: center;
+
 }
 
 .rowNames li {
@@ -125,8 +159,8 @@ input {
 }
 
 .fire {
-  width: 50%;
-  height: 50%;
+  width: 45%;
+  height: 35%;
 }
 
 .fire-header {
@@ -135,8 +169,8 @@ input {
 }
 
 .cold {
-  width: 70%;
-  height: 70%;
+  width: 39%;
+  height: 9%;
 }
 
 .cold-header {
@@ -145,8 +179,8 @@ input {
 }
 
 .lightning {
-  width: 40%;
-  height: 40%;
+  width: 6%;
+  height: 2%;
 }
 
 .lightning-header {
