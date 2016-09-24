@@ -82,8 +82,10 @@ body {
 
 
 .str, .int, .dex {
-  height: 43%;
-  width: 43%;
+  /*height: 43%;
+  width: 43%;*/
+  height: 3em;
+  width: 3em;
 }
 
 
@@ -167,8 +169,10 @@ input {
 }
 
 .fire {
-  width: 40%;
-  height: 35%;
+  /*width: 40%;
+  height: 35%;*/
+  height: 3em;
+  wdith: 3em;
 }
 
 .red-header {
@@ -176,8 +180,11 @@ input {
 }
 
 .cold {
-  width: 49%;
-  height: 9%;
+  /*width: 49%;
+  height: 9%;*/
+  height: 3em;
+  wdith: 3em;
+
 }
 
 .blue-header {
@@ -185,8 +192,10 @@ input {
 }
 
 .lightning {
-  width: 22%;
-  height: 2%;
+  /*width: 22%;
+  height: 2%;*/
+  height: 3em;
+  wdith: 3em;
 }
 
 .yellow-header {
@@ -198,10 +207,14 @@ input {
   color: green;
 }
 
-/*th {
-  height: 330%;
-}*/
+th {
+  overflow: hidden;
+}
 
 tr.header {
   height: 4.5em;
+}
+
+tr.break-point td {
+  padding-bottom: 2em;
 }
