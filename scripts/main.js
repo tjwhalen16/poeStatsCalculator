@@ -18,10 +18,10 @@ function edit() {
 }
 
 function calculateNeededStat() {
-  console.log('testing oneIndexedIndex ', oneIndexedIndex(this.parentElement));
+  console.log('testing oneIndexedColumnIndex ', oneIndexedColumnIndex(this.parentNode));
 
-  //Find out which child this is
-  var idx = oneIndexedIndex(this.parentElement);
+  //Find out which column this is in
+  var idx = oneIndexedColumnIndex(this.parentNode);
 
   //Find out which table this is in
   var table = whichTableIsInputIn(this);
@@ -32,16 +32,18 @@ function calculateNeededStat() {
 
 
 
-/*
- * Finds out which index the child is.
- * Returns the answer 1-indexed instead of 0-indexed.
+/**
+ * Finds out which column the child is in.
+ *
+ * @param {Node} cell The cell (parent of input)
+ * @return {number} the column number 1-indexed instead of 0-indexed.
  */
-function oneIndexedIndex(child) {
-  var children = child.parentElement.children;
+function oneIndexedColumnIndex(cell) {
+  var children = cell.parentNode.children;
   var idx;
 
   for (var i = 0; i < children.length; i++) {
-    if (child === children[i]) {
+    if (cell === children[i]) {
       idx = i + 1;
       break;
     }
@@ -50,9 +52,11 @@ function oneIndexedIndex(child) {
   return idx;
 }
 
-/*
+/**
  * Finds out which table this 'input' tag is in
- * Returns 'left-table' or 'right-table'
+ *
+ * @param {Node} input The input
+ * @return {string} 'left-table' or 'right-table'
  */
 function whichTableIsInputIn(input) {
   console.log(input.parentNode.parentNode.parentNode.parentNode.className);
