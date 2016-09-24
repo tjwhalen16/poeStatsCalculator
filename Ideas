@@ -1,1 +1,10 @@
 *Check mark next to gear slot after they input all numbers for row
+*Should tab cross to other table on same row? or go through each table separately
+*Green background for 'needed' >= 0, otherwise red background
+  -only if they have selected any cell in that column though(gray default?)
+*alternating backgrounds for gear list, to help visibility
+  -black
+  -grey
+  -black
+  ...
+*change 'var idx' to 'var col'

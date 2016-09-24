@@ -8,6 +8,7 @@ header h1{
   background: black;
   color: pink;
 	margin: 0;
+  text-align: center;
 }
 
 html {
@@ -25,9 +26,9 @@ body {
   width: 50%;
 }
 
-.column.right-col.names {
+/*.column.right-col.names {
   width:20%;
-}
+}*/
 
 .column.right-col.stats {
   width: 10%;
@@ -46,9 +47,14 @@ body {
 	height: inherit;
 	background: #666;
 	margin: 0 auto;
+  padding: 2em 0 0 0;
 }
 
 
+
+tr.output td div {
+  display: inline-block;
+}
 
 
 
@@ -94,43 +100,63 @@ body {
 
 
 
-table, tr, th, td {
-  border: 1px solid black;
+.left-table {
+  border-right: 1px solid #444;
+}
+
+.right-table {
+  border-left: 1px solid #444;
 }
 
 
 
 
-td {
-  /*height 20%;
-  width: 25%;*/
+/*td {
   text-align: center;
-}
+}*/
 
 .head {
   float: left;
 }
 
-col.names {
-  width: 20%;
-}
-col.stats {
-  width: 10%;
+
+/*col.names td {
+  float: left;
+}*/
+
+th {
+  text-align: left;
 }
 
-td:nth-child(2n) > input {
+td + td,
+th + th,
+th + td {
+  text-align: center;
+}
+
+
+
+col.names {
+  /*text-align: left*/
+  width: 17%;
+}
+col.stats {
+  width: 11%;
+}
+
+td:nth-child(2) > input {
   background: #FFC4C4;
 }
 
-td:nth-child(3n) > input {
+td:nth-child(3) > input {
   background: #C4D7FF;
 }
 
-td:nth-child(4n) > input {
+td:nth-child(4) > input {
   background: #FAFF94;
 }
 
-.right-table td:nth-child(4n) > input {
+.right-table td:nth-child(4) > input {
   background: #C4FFC6;
 }
 
