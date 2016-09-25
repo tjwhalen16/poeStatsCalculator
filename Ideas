@@ -7,4 +7,7 @@
   -grey
   -black
   ...
-*change 'var idx' to 'var col'
+*What if they input a char instead of number? (red 'x' next to box cus error?)
+*What if they input a number < 0? shouldn't happen except 'naked stat' resists
+*Stack tables when screensize gets small (does this require scrolling?)
+*Navigate with arrow keys

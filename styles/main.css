@@ -1,12 +1,9 @@
-table {
-  table-layout: fixed;
-  width: 100%;
-  height: 100%;
-}
-
+/**
+ * Page layout rules
+ */
 header h1{
   background: black;
-  color: pink;
+  color: #aaa;
 	margin: 0;
   text-align: center;
 }
@@ -15,10 +12,10 @@ html {
 	height: 100%;
 }
 body {
-	margin: 0;
+  background: #aaa;
 	height: inherit;
+	margin: 0;
   overflow: hidden;
-	background: #aaa;
 }
 
 .column {
@@ -26,105 +23,30 @@ body {
   width: 50%;
 }
 
-/*.column.right-col.names {
-  width:20%;
-}*/
-
-.column.right-col.stats {
-  width: 10%;
-}
-
-/*.column.right-col {
-  width: 12%;
-}*/
-
 .columns-wrap {
 	overflow: hidden;
 }
 
 .content {
-	width: 60%;
+  background: #555;
 	height: inherit;
-	background: #666;
 	margin: 0 auto;
   padding: 2em 0 0 0;
+	width: 60%;
 }
 
 
-
-tr.output td div {
-  display: inline-block;
+/**
+ * Table rules
+ */
+table {
+  height: 100%;
+  table-layout: fixed;
+  width: 100%;
 }
-
-
-
-
-
-
-
-.first {
-  margin-top: 60%;
-}
-
-#strength li input, #fire li input {
-  /*background: #E85858;*/
-  background: #FFC4C4;
-}
-#intelligence li input, #cold li input {
-  /*background: #3E80FA;*/
-  background: #C4D7FF;
-}
-#dexterity li input {
-  /*background: #3EFA3E;*/
-  background: #C4FFC6;
-}
-#lightning li input {
-  background: #FAFF94;
-}
-
-
-
-
-
-
-.str, .int, .dex {
-  /*height: 43%;
-  width: 43%;*/
-  height: 3em;
-  width: 3em;
-}
-
-
-
-
-
-
-
-.left-table {
-  border-right: 1px solid #444;
-}
-
-.right-table {
-  border-left: 1px solid #444;
-}
-
-
-
-
-/*td {
-  text-align: center;
-}*/
-
-.head {
-  float: left;
-}
-
-
-/*col.names td {
-  float: left;
-}*/
 
 th {
+  overflow: hidden;
   text-align: left;
 }
 
@@ -134,16 +56,61 @@ th + td {
   text-align: center;
 }
 
+.left-table {
+  border-right: 1px solid #444;
+}
 
+.right-table {
+  border-left: 1px solid #444;
+}
+
+tr.output td div {
+  display: inline-block;
+}
 
 col.names {
-  /*text-align: left*/
-  width: 17%;
-}
-col.stats {
   width: 11%;
 }
+col.stats {
+  width: 13%;
+}
 
+tr.header {
+  height: 4.5em;
+}
+
+tr.break-point td {
+  padding-bottom: 2em;
+}
+
+
+/**
+ * Image rules
+ */
+.str, .int, .dex {
+  height: 3em;
+  width: 3em;
+}
+
+.fire {
+  height: 3em;
+  wdith: 3em;
+}
+
+.cold {
+  height: 3em;
+  wdith: 3em;
+}
+
+.lightning {
+  height: 3em;
+  wdith: 3em;
+}
+
+
+/**
+ * Input rules
+ */
 td:nth-child(2) > input {
   background: #FFC4C4;
 }
@@ -160,87 +127,50 @@ td:nth-child(4) > input {
   background: #C4FFC6;
 }
 
+input {
+  width: 65%;
+  text-align: center;
+}
+
+
+/**
+ * Instructions rules
+ */
+.instructions {
+  padding-top: 5em;
+  text-align: center;
+  width: 100%;
+}
+
+.instructions p {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1.3em;
+}
+
+.instructions p.break-point {
+  padding-bottom: 1.5em;
+}
+
+
+/**
+ * Header text rules
+ */
 p {
   margin: 0;
-}
-
-.myRow {
-  padding: 0;
-}
-
-.myRowName {
-  min-height: 1px;
-	width: 30%;
-	/*padding-right: 25%;*/
-}
-
-.myHeader {
-  padding-bottom: 2%;
-}
-
-
-
-.myPercentSign {
-    margin: 0 3% 0 0;
-}
-
-input {
-  width: 60%;
-  text-align: center;
-
-}
-
-.rowNames li {
-  margin-bottom: 3%;
-}
-
-.fire {
-  /*width: 40%;
-  height: 35%;*/
-  height: 3em;
-  wdith: 3em;
 }
 
 .red-header {
   color: red;
 }
 
-.cold {
-  /*width: 49%;
-  height: 9%;*/
-  height: 3em;
-  wdith: 3em;
-
-}
-
 .blue-header {
   color: blue;
 }
 
-.lightning {
-  /*width: 22%;
-  height: 2%;*/
-  height: 3em;
-  wdith: 3em;
-}
-
 .yellow-header {
   color: yellow;
-  /*font-size: 80%;*/
 }
 
 .green-header {
   color: green;
-}
-
-th {
-  overflow: hidden;
-}
-
-tr.header {
-  height: 4.5em;
-}
-
-tr.break-point td {
-  padding-bottom: 2em;
 }

@@ -2,59 +2,65 @@
 var inputs = document.querySelectorAll('input');
 
 for (var i = 0; i < inputs.length; i++) {
-  // inputs[i].parentElement.addEventListener("click", edit);
-  // inputs[i].addEventListener('click', edit);
   inputs[i].addEventListener('focus', edit);
   inputs[i].addEventListener('blur', updateNeededStat);
-
 }
 
-
+/**
+ * Puts the input box into focus and preselects its text for fast changing
+ */
 function edit() {
   this.focus();
-  //console.log('my current value is', this.value || 0);
-  //console.log('testing oneIndexedIndex ', oneIndexedIndex.call(this.parentElement));
   this.setSelectionRange(0, this.value.length);
 }
 
+/**
+ * Updates the output row at the bottom of the column that 'this' is in
+ */
 function updateNeededStat() {
-  //console.log('testing oneIndexedColumnIndex ', oneIndexedColumnIndex(this.parentNode));
-
   //Find out which column this is in
-  var idx = oneIndexedColumnIndex(this.parentNode);
+  var colIdx = oneIndexedColumnIndex(this.parentNode);
 
   //Find out which table this is in
   var table = whichTableIsInputIn(this);
 
-  //Get all inputs in the table 'table' with the column 'idx' using nth-child
+  //Get all inputs in the table 'table' with the column 'colIdx' using nth-child
   var inputs = document.querySelectorAll('.' + table + ' td:nth-child(' +
-      idx + ') > input');
+      colIdx + ') > input');
 
   //Get the needed stat
   var output = calculateNeededStat(inputs);
 
   //Save the needed state to the webpage
-  saveNeededStat(output, idx, table);
-
+  saveNeededStat(output, colIdx, table);
 }
 
-function saveNeededStat(output, idx, table) {
-  //var outputCell = document.querySelector('');
-  console.log('output/idx/table is ' + output + '/' + idx + '/' + table);
+/**
+ * Finds out which column the child is in.
+ * @param {Node} cell The cell (parent of input)
+ * @return {number} the column number 1-indexed instead of 0-indexed.
+ */
+function oneIndexedColumnIndex(cell) {
+  var children = cell.parentNode.children;
+  var colIdx;
 
-  //Get output row in table @table
-  var row = document.querySelector('.' + table + ' tr.output');
-
-  //Get output cell in column @idx
-  var cell = row.children[idx-1]; //-1 because idx is 1-indexed and array is 0-indexed
-
-  //TODO change cell color based on output
-
-  //Write @output to innerHTML
-  if (! isNaN(output)) {
-    cell.querySelector('.number').innerHTML = output;
+  for (var i = 0; i < children.length; i++) {
+    if (cell === children[i]) {
+      colIdx = i + 1;
+      break;
+    }
   }
-  //console.log('innerHTML ' + cell.querySelector('.number').innerHTML);
+
+  return colIdx;
+}
+
+/**
+ * Finds out which table this 'input' tag is in
+ * @param {Node} input The input
+ * @return {string} 'left-table' or 'right-table'
+ */
+function whichTableIsInputIn(input) {
+  return input.parentNode.parentNode.parentNode.parentNode.className;
 }
 
 /**
@@ -77,32 +83,27 @@ function calculateNeededStat(inputs) {
   return target-sum;
 }
 
-
 /**
- * Finds out which column the child is in.
- * @param {Node} cell The cell (parent of input)
- * @return {number} the column number 1-indexed instead of 0-indexed.
+ * Saves @output to the screen at the position dictated by @colIdx, @table
+ * @param {number} output The number to be shown on the screen
+ * @param {number} colIdx The colIdx that represents the column to change
+ * @param {string} table The class name that represents the table to change
  */
-function oneIndexedColumnIndex(cell) {
-  var children = cell.parentNode.children;
-  var idx;
+function saveNeededStat(output, colIdx, table) {
+  //var outputCell = document.querySelector('');
+  console.log('output/colIdx/table is ' + output + '/' + colIdx + '/' + table);
 
-  for (var i = 0; i < children.length; i++) {
-    if (cell === children[i]) {
-      idx = i + 1;
-      break;
-    }
+  //Get output row in table @table
+  var row = document.querySelector('.' + table + ' tr.output');
+
+  //Get output cell in column @colIdx
+  //-1 because colIdx is 1-indexed and array is 0-indexed
+  var cell = row.children[colIdx-1];
+
+  //TODO change cell color based on output
+
+  //Write @output to innerHTML
+  if (! isNaN(output)) {
+    cell.querySelector('.number').innerHTML = output;
   }
-
-  return idx;
-}
-
-/**
- * Finds out which table this 'input' tag is in
- * @param {Node} input The input
- * @return {string} 'left-table' or 'right-table'
- */
-function whichTableIsInputIn(input) {
-  //console.log(input.parentNode.parentNode.parentNode.parentNode.className);
-  return input.parentNode.parentNode.parentNode.parentNode.className;
 }
