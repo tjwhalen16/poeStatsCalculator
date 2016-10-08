@@ -72,7 +72,10 @@ col.names {
   width: 11%;
 }
 col.stats {
-  width: 13%;
+  width: 11%;
+}
+col.all {
+  width:6%
 }
 
 tr.header {
@@ -94,17 +97,17 @@ tr.break-point td {
 
 .fire {
   height: 3em;
-  wdith: 3em;
+  width: 3em;
 }
 
 .cold {
   height: 3em;
-  wdith: 3em;
+  width: 4em;
 }
 
 .lightning {
   height: 3em;
-  wdith: 3em;
+  width: 2em;
 }
 
 
@@ -125,6 +128,10 @@ td:nth-child(4) > input {
 
 .right-table td:nth-child(4) > input {
   background: #C4FFC6;
+}
+
+td:nth-child(5) > input {
+  background: #aaa;
 }
 
 input {
