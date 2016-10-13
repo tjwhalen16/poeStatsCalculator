@@ -1,10 +1,34 @@
+//Set up event listeners
 //Set up listener on the inputs
 var inputs = document.querySelectorAll('input');
-
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('focus', edit);
   inputs[i].addEventListener('blur', updateNeededStat);
 }
+
+window.addEventListener('resize', function() {
+  // console.log('innerWidth = ' + this.innerWidth);
+  // console.log('innerHeight = ' + this.innerHeight);
+
+  //1804
+  if (this.innerWidth < 1804) {
+    console.log('width < 1804');
+    var columns = document.querySelectorAll('.column');
+    for (var i = 0; i < columns.length; i++) {
+      columns[i].classList.add('column-small');
+    }
+  } else {
+    console.log("width BIG");
+    var columns = document.querySelectorAll('.column');
+
+    for (var i = 0; i < columns.length; i++) {
+      if (columns[i].classList.contains('column-small')) {
+        columns[i].classList.remove('column-small');
+      }
+
+    }
+  }
+})
 
 /**
  * Puts the input box into focus and preselects its text for fast changing
