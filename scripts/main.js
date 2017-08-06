@@ -7,6 +7,17 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('paste', pasteItem);
 }
 
+const tableLayout = {
+  fire: 1,
+  cold: 2,
+  lightning: 3,
+  allResist: 4,
+  strength: 6,
+  int: 7,
+  dex: 8,
+  allAttributes: 9
+};
+
 /**
  * Puts the input box into focus and preselects its text for fast changing
  */
@@ -18,11 +29,11 @@ function edit() {
 /**
  * Updates the output row at the bottom of the column that 'this' is in
  */
-function updateNeededStat() {
+function updateNeededStat(e, columnIndex, tableClass) {
   //Find out which column this is in
-  var colIdx = getColumnIndex(this.parentNode);
+  var colIdx = columnIndex || getColumnIndex(this.parentNode);
   //Find out which table this is in
-  var table = whichTableIsInputIn(this);
+  var table = tableClass || whichTableIsInputIn(this);
 
   //If I just blurred out of the plus to all column, need to update all 3 stats
   if (colIdx === 4) {
@@ -41,7 +52,6 @@ function updateNeededStat() {
     plusToAllInputs = Array.prototype.slice.call(plusToAllInputs);
     inputs = inputs.concat(plusToAllInputs); //Join the two arrays
 
-
     //Get the needed stat
     var output = calculateNeededStat(inputs);
 
@@ -52,7 +62,8 @@ function updateNeededStat() {
 
 function pasteItem(e) {
   const pastedStats = getItemStatsFromPastedText(e.clipboardData.getData('text/plain'));
-  console.log(pastedStats);
+  fillTableWithPastedStats(pastedStats, getRowIndex(this));
+  updateTableAfterPaste(pastedStats);
   e.preventDefault();
 }
 
@@ -67,15 +78,15 @@ function getItemStatsFromPastedText(text) {
   if (match) {
     pastedStats.fire = match[1];
   }
-  //lightning
-  match = /\+(\d+)%* to Lightning Resistance/i.exec(text)
-  if (match) {
-    pastedStats.lightning = match[1];
-  }
   //cold
   match = /\+(\d+)%* to Cold Resistance/i.exec(text)
   if (match) {
     pastedStats.cold = match[1];
+  }
+  //lightning
+  match = /\+(\d+)%* to Lightning Resistance/i.exec(text)
+  if (match) {
+    pastedStats.lightning = match[1];
   }
   //all resist
   match = /\+(\d+) to all \w+ Resistances/i.exec(text)
@@ -88,15 +99,15 @@ function getItemStatsFromPastedText(text) {
   if (match) {
     pastedStats.strength = match[i];
   }
-  //dexteriry
-  match = /\+(\d+) to Dexterity/i.exec(text)
-  if (match) {
-    pastedStats.dex = match[1];
-  }
   //intellect
   match = /\+(\d+)%* to Intelligence/i.exec(text)
   if (match) {
     pastedStats.int = match[i];
+  }
+  //dexteriry
+  match = /\+(\d+) to Dexterity/i.exec(text)
+  if (match) {
+    pastedStats.dex = match[1];
   }
   //all attributes
   match = /\+(\d+) to all Attributes/i.exec(text)
@@ -105,6 +116,25 @@ function getItemStatsFromPastedText(text) {
   }
 
   return pastedStats;
+}
+
+function fillTableWithPastedStats(stats, rowIdx) {
+  let cells = getAllCellsFromRow(rowIdx);
+  for (let key in stats) {
+    cells[tableLayout[key]].children[0].value = stats[key];
+  }
+}
+
+function getAllCellsFromRow(rowIdx) {
+  let leftRow = document.getElementsByClassName('left-table')[0].rows[rowIdx];
+  let rightRow = document.getElementsByClassName('right-table')[0].rows[rowIdx];
+  let cells = Array.prototype.slice.call(leftRow.cells);
+  cells = cells.concat(Array.prototype.slice.call(rightRow.cells));
+  return cells;
+}
+
+function updateTableAfterPaste(stats) {
+  
 }
 
 /**
@@ -124,6 +154,10 @@ function getColumnIndex(cell) {
   }
 
   return colIdx;
+}
+
+function getRowIndex(cell) {
+  return cell.parentNode.parentNode.rowIndex;
 }
 
 /**
