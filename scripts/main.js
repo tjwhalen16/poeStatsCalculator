@@ -4,6 +4,7 @@ var inputs = document.querySelectorAll('input');
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('focus', edit);
   inputs[i].addEventListener('blur', updateNeededStat);
+  inputs[i].addEventListener('paste', pasteItem);
 }
 
 /**
@@ -47,6 +48,63 @@ function updateNeededStat() {
     //Save the needed state to the webpage
     saveNeededStat(output, colIdx, table);
   }
+}
+
+function pasteItem(e) {
+  const pastedStats = getItemStatsFromPastedText(e.clipboardData.getData('text/plain'));
+  console.log(pastedStats);
+  e.preventDefault();
+}
+
+function getItemStatsFromPastedText(text) {
+  if (!text) { return; }
+
+  let pastedStats = {};
+  let match;
+
+  //fire
+  match = /\+(\d+)%* to Fire Resistance/i.exec(text)
+  if (match) {
+    pastedStats.fire = match[1];
+  }
+  //lightning
+  match = /\+(\d+)%* to Lightning Resistance/i.exec(text)
+  if (match) {
+    pastedStats.lightning = match[1];
+  }
+  //cold
+  match = /\+(\d+)%* to Cold Resistance/i.exec(text)
+  if (match) {
+    pastedStats.cold = match[1];
+  }
+  //all resist
+  match = /\+(\d+) to all \w+ Resistances/i.exec(text)
+  if (match) {
+    pastedStats.allResist = match[1];
+  }
+
+  //strength
+  match = /\+(\d+) to Strength/i.exec(text)
+  if (match) {
+    pastedStats.strength = match[i];
+  }
+  //dexteriry
+  match = /\+(\d+) to Dexterity/i.exec(text)
+  if (match) {
+    pastedStats.dex = match[1];
+  }
+  //intellect
+  match = /\+(\d+)%* to Intelligence/i.exec(text)
+  if (match) {
+    pastedStats.int = match[i];
+  }
+  //all attributes
+  match = /\+(\d+) to all Attributes/i.exec(text)
+  if (match) {
+    pastedStats.allAttributes = match[1];
+  }
+
+  return pastedStats;
 }
 
 /**
