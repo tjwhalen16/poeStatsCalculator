@@ -4,7 +4,19 @@ var inputs = document.querySelectorAll('input');
 for (var i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('focus', edit);
   inputs[i].addEventListener('blur', updateNeededStat);
+  inputs[i].addEventListener('paste', pasteItem);
 }
+
+const tableColumnLayout = {
+  fire: 1,
+  cold: 2,
+  lightning: 3,
+  allResist: 4,
+  strength: 6,
+  int: 7,
+  dex: 8,
+  allAttributes: 9
+};
 
 /**
  * Puts the input box into focus and preselects its text for fast changing
@@ -17,11 +29,11 @@ function edit() {
 /**
  * Updates the output row at the bottom of the column that 'this' is in
  */
-function updateNeededStat() {
+function updateNeededStat(e, columnIndex, tableClass) {
   //Find out which column this is in
-  var colIdx = getColumnIndex(this.parentNode);
+  var colIdx = columnIndex || getColumnIndex(this.parentNode);
   //Find out which table this is in
-  var table = whichTableIsInputIn(this);
+  var table = tableClass || whichTableIsInputIn(this);
 
   //If I just blurred out of the plus to all column, need to update all 3 stats
   if (colIdx === 4) {
@@ -40,13 +52,94 @@ function updateNeededStat() {
     plusToAllInputs = Array.prototype.slice.call(plusToAllInputs);
     inputs = inputs.concat(plusToAllInputs); //Join the two arrays
 
-
     //Get the needed stat
     var output = calculateNeededStat(inputs);
 
     //Save the needed state to the webpage
     saveNeededStat(output, colIdx, table);
   }
+}
+
+function pasteItem(e) {
+  const pastedStats = getItemStatsFromPastedText(e.clipboardData.getData('text/plain'));
+  fillTableWithPastedStats(pastedStats, getRowIndex(this));
+  updateTableAfterPaste(pastedStats);
+  e.preventDefault();
+}
+
+function getItemStatsFromPastedText(text) {
+  if (!text) { return; }
+
+  let stats = { fire: 0, cold: 0, lightning: 0, allResist: 0, strength: 0, int: 0, dex: 0, allAttributes: 0 };
+  let match;
+  let re;
+
+  re = /([-|\+]\d+)%* to Fire Resistance/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.fire += parseInt(match[1]);
+  }
+  //cold
+  re = /([-|\+]\d+)%* to Cold Resistance/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.cold += parseInt(match[1]);
+  }
+  //lightning
+  re = /([-|\+]\d+)%* to Lightning Resistance/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.lightning += parseInt(match[1]);
+  }
+  //all resist
+  re = /([-|\+]\d+)%* to all \w+ Resistances/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.allResist += parseInt(match[1]);
+  }
+
+  //strength
+  re = /([-|\+]\d+) to Strength/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.strength += parseInt(match[1]);
+  }
+  //intellect
+  re = /([-|\+]\d+) to Intelligence/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.int += parseInt(match[1]);
+  }
+  //dexteriry
+  re = /([-|\+]\d+) to Dexterity/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.dex += parseInt(match[1]);
+  }
+  //all attributes
+  re = /([-|\+]\d+) to all Attributes/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.allAttributes += parseInt(match[1]);
+  }
+
+  return stats;
+}
+
+function fillTableWithPastedStats(stats, rowIdx) {
+  let cells = getAllCellsFromRow(rowIdx);
+  for (let key in stats) {
+    cells[tableColumnLayout[key]].children[0].value = stats[key];
+  }
+}
+
+function getAllCellsFromRow(rowIdx) {
+  let leftRow = document.getElementsByClassName('left-table')[0].rows[rowIdx];
+  let rightRow = document.getElementsByClassName('right-table')[0].rows[rowIdx];
+  let cells = Array.prototype.slice.call(leftRow.cells);
+  cells = cells.concat(Array.prototype.slice.call(rightRow.cells));
+  return cells;
+}
+
+function updateTableAfterPaste(stats) {
+  updateNeededStat(null, 1, 'left-table');
+  updateNeededStat(null, 2, 'left-table');
+  updateNeededStat(null, 3, 'left-table');
+  updateNeededStat(null, 1, 'right-table');
+  updateNeededStat(null, 2, 'right-table');
+  updateNeededStat(null, 3, 'right-table');
 }
 
 /**
@@ -66,6 +159,10 @@ function getColumnIndex(cell) {
   }
 
   return colIdx;
+}
+
+function getRowIndex(cell) {
+  return cell.parentNode.parentNode.rowIndex;
 }
 
 /**
