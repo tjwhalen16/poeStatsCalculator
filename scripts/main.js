@@ -7,7 +7,7 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener('paste', pasteItem);
 }
 
-const tableLayout = {
+const tableColumnLayout = {
   fire: 1,
   cold: 2,
   lightning: 3,
@@ -70,58 +70,58 @@ function pasteItem(e) {
 function getItemStatsFromPastedText(text) {
   if (!text) { return; }
 
-  let pastedStats = {};
+  let stats = { fire: 0, cold: 0, lightning: 0, allResist: 0, strength: 0, int: 0, dex: 0, allAttributes: 0 };
   let match;
+  let re;
 
-  //fire
-  match = /\+(\d+)%* to Fire Resistance/i.exec(text)
-  if (match) {
-    pastedStats.fire = match[1];
+  re = /([-|\+]\d+)%* to Fire Resistance/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.fire += parseInt(match[1]);
   }
   //cold
-  match = /\+(\d+)%* to Cold Resistance/i.exec(text)
-  if (match) {
-    pastedStats.cold = match[1];
+  re = /([-|\+]\d+)%* to Cold Resistance/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.cold += parseInt(match[1]);
   }
   //lightning
-  match = /\+(\d+)%* to Lightning Resistance/i.exec(text)
-  if (match) {
-    pastedStats.lightning = match[1];
+  re = /([-|\+]\d+)%* to Lightning Resistance/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.lightning += parseInt(match[1]);
   }
   //all resist
-  match = /\+(\d+) to all \w+ Resistances/i.exec(text)
-  if (match) {
-    pastedStats.allResist = match[1];
+  re = /([-|\+]\d+)%* to all \w+ Resistances/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.allResist += parseInt(match[1]);
   }
 
   //strength
-  match = /\+(\d+) to Strength/i.exec(text)
-  if (match) {
-    pastedStats.strength = match[i];
+  re = /([-|\+]\d+) to Strength/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.strength += parseInt(match[1]);
   }
   //intellect
-  match = /\+(\d+)%* to Intelligence/i.exec(text)
-  if (match) {
-    pastedStats.int = match[i];
+  re = /([-|\+]\d+) to Intelligence/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.int += parseInt(match[1]);
   }
   //dexteriry
-  match = /\+(\d+) to Dexterity/i.exec(text)
-  if (match) {
-    pastedStats.dex = match[1];
+  re = /([-|\+]\d+) to Dexterity/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.dex += parseInt(match[1]);
   }
   //all attributes
-  match = /\+(\d+) to all Attributes/i.exec(text)
-  if (match) {
-    pastedStats.allAttributes = match[1];
+  re = /([-|\+]\d+) to all Attributes/gi;
+  while ((match = re.exec(text)) != null) {
+    stats.allAttributes += parseInt(match[1]);
   }
 
-  return pastedStats;
+  return stats;
 }
 
 function fillTableWithPastedStats(stats, rowIdx) {
   let cells = getAllCellsFromRow(rowIdx);
   for (let key in stats) {
-    cells[tableLayout[key]].children[0].value = stats[key];
+    cells[tableColumnLayout[key]].children[0].value = stats[key];
   }
 }
 
