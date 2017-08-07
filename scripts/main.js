@@ -134,7 +134,12 @@ function getAllCellsFromRow(rowIdx) {
 }
 
 function updateTableAfterPaste(stats) {
-  
+  updateNeededStat(null, 1, 'left-table');
+  updateNeededStat(null, 2, 'left-table');
+  updateNeededStat(null, 3, 'left-table');
+  updateNeededStat(null, 1, 'right-table');
+  updateNeededStat(null, 2, 'right-table');
+  updateNeededStat(null, 3, 'right-table');
 }
 
 /**
