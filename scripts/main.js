@@ -74,42 +74,35 @@ function getItemStatsFromPastedText(text) {
   let match;
   let re;
 
-  re = /([-|\+]\d+)%* to Fire Resistance/gi;
+  re = /([-|\+]\d+)%* to .*Fire .*Resistance[s]*/gi;
   while ((match = re.exec(text)) != null) {
     stats.fire += parseInt(match[1]);
   }
-  //cold
-  re = /([-|\+]\d+)%* to Cold Resistance/gi;
+  re = /([-|\+]\d+)%* to .*Cold .*Resistance[s]*/gi;
   while ((match = re.exec(text)) != null) {
     stats.cold += parseInt(match[1]);
   }
-  //lightning
-  re = /([-|\+]\d+)%* to Lightning Resistance/gi;
+  re = /([-|\+]\d+)%* to .*Lightning .*Resistance[s]*/gi;
   while ((match = re.exec(text)) != null) {
     stats.lightning += parseInt(match[1]);
   }
-  //all resist
   re = /([-|\+]\d+)%* to all \w+ Resistances/gi;
   while ((match = re.exec(text)) != null) {
     stats.allResist += parseInt(match[1]);
   }
 
-  //strength
-  re = /([-|\+]\d+) to Strength/gi;
+  re = /([-|\+]\d+) to .*Strength/gi;
   while ((match = re.exec(text)) != null) {
     stats.strength += parseInt(match[1]);
   }
-  //intellect
-  re = /([-|\+]\d+) to Intelligence/gi;
+  re = /([-|\+]\d+) to .*Intelligence/gi;
   while ((match = re.exec(text)) != null) {
     stats.int += parseInt(match[1]);
   }
-  //dexteriry
-  re = /([-|\+]\d+) to Dexterity/gi;
+  re = /([-|\+]\d+) to .*Dexterity/gi;
   while ((match = re.exec(text)) != null) {
     stats.dex += parseInt(match[1]);
   }
-  //all attributes
   re = /([-|\+]\d+) to all Attributes/gi;
   while ((match = re.exec(text)) != null) {
     stats.allAttributes += parseInt(match[1]);
