@@ -1,7 +1,5 @@
 # poeStatsCalculator
-My first attempt at making a website
-
-poeresistancecalculator.com
+An online tool in HTML, CSS, and JavaScript to help others perform a common calculation in a popular Steam computer game.
 
 Picture Sources:
 cold.png: https://s-media-cache-ak0.pinimg.com/564x/dc/59/1c/dc591cfdc3914b5805a2d91f5abf8a0d.jpg
